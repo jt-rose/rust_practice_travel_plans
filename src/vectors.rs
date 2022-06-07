@@ -29,27 +29,31 @@ impl TravelPlans {
             visited_city != &city
         })
     }
-}
 
-// pub can be accessed externally after importing the mod
-pub fn print_something() {
-    println!("something");
-    cant_find_me();
-}
+    pub fn  add_to_wish_list(&mut self, city: String) {
+        let mut already_listed = false;
 
-// without pub, this function is hidden, even after importing this module
-// but it can be used internally, as above
-fn cant_find_me() {
-    println!("I'm hidden to outside modules")
-}
+        for visited_city in self.visited_cities.iter() {
+            if visited_city == &city {
+                println!("You've already been to {}!", city);
+                already_listed = true;
+            }
+        }
 
-pub fn get_cities() -> Vec<String> {
-    let cities = vec![
-        "Tokyo".to_string(),
-        "Paris".to_string(),
-        "Berlin".to_string()
-    ];
-    cities
+        if !already_listed {
+            for new_city in self.travel_wish_list.iter() {
+                if new_city == &city {
+                    println!("{} is already on your wish list!", city);
+                    already_listed = true;
+                }
+            }
+        }
+
+        if !already_listed {
+            println!("Can't wait to visit {}!", city);
+            self.travel_wish_list.push(city);
+        }
+    }
 }
 
 pub fn filter_visited_cities(cities: &Vec<String>) -> Vec<&String> {
