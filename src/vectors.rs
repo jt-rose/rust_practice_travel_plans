@@ -73,6 +73,12 @@ impl TravelPlans {
             }
         }
     }
+
+    pub fn remove_from_wish_list(&mut self, city: &str) {
+        self.travel_wish_list.retain_mut(|wish| {
+            wish != city
+        })
+    }
 }
 
 pub fn filter_visited_cities(cities: &Vec<String>) -> Vec<&String> {

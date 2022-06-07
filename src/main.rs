@@ -20,9 +20,18 @@ fn main() {
     travel_plans.add_visited_city("Brazil");
     travel_plans.add_to_wish_list("Brazil");
 
+    // remove from wish list
+    travel_plans.add_to_wish_list("Melbourne");
+    travel_plans.remove_from_wish_list("Melbourne");
+
     // print out visited cities
     for city in travel_plans.visited_cities.iter() {
         println!("{} has been visited already", city);
+    }
+
+    // print out wish list
+    for city in travel_plans.travel_wish_list.iter() {
+        println!("{} is on your wish list", city);
     }
 
     // print traveller description
