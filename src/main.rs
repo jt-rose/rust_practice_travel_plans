@@ -20,10 +20,6 @@ fn main() {
     travel_plans.add_to_wish_list("Brazil".to_string());
     travel_plans.add_to_wish_list("Seoul".to_string());
 
-    // get and print traveller description
-    let traveller_description = match travel_plans.seasoned_traveller {
-        true => "She has travelled a great deal",
-        false => "she has not travelled so much"
-    };
-    println!("{}", traveller_description);
+    // print traveller description
+    println!("{}", travel_plans.get_traveller_description());
 }

@@ -1,7 +1,6 @@
 pub struct TravelPlans {
     pub visited_cities: Vec<String>,
     pub travel_wish_list: Vec<String>,
-    pub seasoned_traveller: bool
 }
 
 enum VisitStatus {
@@ -14,14 +13,7 @@ impl TravelPlans {
     pub fn new() -> Self {
         Self{
             visited_cities: vec![],
-            travel_wish_list: vec![],
-            seasoned_traveller: false
-        }
-    }
-
-    fn set_seasoned_traveller(&mut self) {
-        if self.visited_cities.len() > 8 {
-            self.seasoned_traveller = true;
+            travel_wish_list: vec![]
         }
     }
 
@@ -41,9 +33,15 @@ impl TravelPlans {
         return VisitStatus::NotListed;
     }
 
+    pub fn get_traveller_description(&self) -> &str {
+        if self.visited_cities.len() > 8 {
+            return "She has travelled a great deal"
+        }
+            return "she has not travelled so much"
+    }
+
     pub fn add_visited_city(&mut self, city: String) {
         self.visited_cities.push(city);
-        self.set_seasoned_traveller();
     }
 
     pub fn remove_visited_city(&mut self, city: String) {
