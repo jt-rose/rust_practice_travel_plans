@@ -25,14 +25,10 @@ fn main() {
     travel_plans.remove_from_wish_list("Melbourne");
 
     // print out visited cities
-    for city in travel_plans.visited_cities.iter() {
-        println!("{} has been visited already", city);
-    }
+    travel_plans.print_visited_cities();
 
     // print out wish list
-    for city in travel_plans.travel_wish_list.iter() {
-        println!("{} is on your wish list", city);
-    }
+    travel_plans.print_wish_list();
 
     // print traveller description
     println!("{}", travel_plans.get_traveller_description());

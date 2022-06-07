@@ -79,27 +79,29 @@ impl TravelPlans {
             wish != city
         })
     }
-}
 
-pub fn filter_visited_cities(cities: &Vec<String>) -> Vec<&String> {
-    // list of visited cities
-    let visited_cities = ["Tokyo".to_string(), "Paris".to_string()];
-    let mut unvisited: Vec<&String> = vec![];
+    pub fn print_visited_cities(&self) {
 
-    // loop through city and visited list and store unvisited in above vector
-    for city in cities.iter() {
-        let mut already_visited = false;
-        for visited_city in visited_cities.iter() {
-            if city == visited_city {
-                already_visited = true;
+        if self.visited_cities.len() <= 0 {
+            println!("No cities visited yet");
+        } else {
+            println!("Visited Cities:");
+            for city in self.visited_cities.iter() {
+                println!("  {}", city);
             }
-        }
-        if !already_visited {
-            unvisited.push(city);
         }
     }
 
-    // return unvisited list
-    unvisited
+    pub fn print_wish_list(&self) {
+
+        if self.travel_wish_list.len() <= 0 {
+            println!("No cities on wish list yet")
+        } else {
+            println!("Wish List:");
+            for city in self.travel_wish_list.iter() {
+                println!("  {}", city);
+            }
+        }
+    }
 }
 
