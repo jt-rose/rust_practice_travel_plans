@@ -4,6 +4,12 @@ pub struct TravelPlans {
     pub seasoned_traveller: bool
 }
 
+enum VisitStatus {
+    Visited,
+    OnWishList,
+    NotListed
+}
+
 impl TravelPlans {
     pub fn new() -> Self {
         Self{
@@ -19,6 +25,22 @@ impl TravelPlans {
         }
     }
 
+    fn check_already_listed(&self, city: &str) -> VisitStatus {
+        for visited_city in self.visited_cities.iter() {
+            if visited_city == city {
+                return VisitStatus::Visited;
+            }
+        }
+
+            for wish_list_item in self.travel_wish_list.iter() {
+                if wish_list_item == city {
+                    return VisitStatus::OnWishList;
+                }
+        }
+
+        return VisitStatus::NotListed;
+    }
+
     pub fn add_visited_city(&mut self, city: String) {
         self.visited_cities.push(city);
         self.set_seasoned_traveller();
@@ -31,27 +53,15 @@ impl TravelPlans {
     }
 
     pub fn  add_to_wish_list(&mut self, city: String) {
-        let mut already_listed = false;
+        let visit_status = self.check_already_listed(&city);
 
-        for visited_city in self.visited_cities.iter() {
-            if visited_city == &city {
-                println!("You've already been to {}!", city);
-                already_listed = true;
+        match visit_status {
+            VisitStatus::Visited => println!("You've already been to {}!", city),
+            VisitStatus::OnWishList => println!("{} is already on your wish list!", city),
+            VisitStatus::NotListed => {
+                println!("Can't wait to visit {}!", city);
+                self.travel_wish_list.push(city);
             }
-        }
-
-        if !already_listed {
-            for new_city in self.travel_wish_list.iter() {
-                if new_city == &city {
-                    println!("{} is already on your wish list!", city);
-                    already_listed = true;
-                }
-            }
-        }
-
-        if !already_listed {
-            println!("Can't wait to visit {}!", city);
-            self.travel_wish_list.push(city);
         }
     }
 }
