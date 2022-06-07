@@ -10,3 +10,13 @@ pub fn print_something() {
 fn cant_find_me() {
     println!("I'm hidden to outside modules")
 }
+
+pub fn get_cities() -> Vec<String> {
+    let cities = vec![
+        "Tokyo".to_string(),
+        "Paris".to_string(),
+        "Berlin".to_string()
+    ];
+    cities
+}
+
