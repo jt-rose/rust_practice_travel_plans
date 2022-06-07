@@ -1,3 +1,35 @@
+pub struct TravelPlans {
+    pub visited_cities: Vec<String>,
+    pub travel_wish_list: Vec<String>,
+    pub seasoned_traveller: bool
+}
+
+impl TravelPlans {
+    pub fn new() -> Self {
+        Self{
+            visited_cities: vec![],
+            travel_wish_list: vec![],
+            seasoned_traveller: false
+        }
+    }
+
+    fn set_seasoned_traveller(&mut self) {
+        if self.visited_cities.len() > 8 {
+            self.seasoned_traveller = true;
+        }
+    }
+
+    pub fn add_visited_city(&mut self, city: String) {
+        self.visited_cities.push(city);
+        self.set_seasoned_traveller();
+    }
+
+    pub fn remove_visited_city(&mut self, city: String) {
+        self.visited_cities.retain_mut(|visited_city| {
+            visited_city != &city
+        })
+    }
+}
 
 // pub can be accessed externally after importing the mod
 pub fn print_something() {
