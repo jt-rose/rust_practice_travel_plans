@@ -20,3 +20,25 @@ pub fn get_cities() -> Vec<String> {
     cities
 }
 
+pub fn filter_visited_cities(cities: &Vec<String>) -> Vec<&String> {
+    // list of visited cities
+    let visited_cities = ["Tokyo".to_string(), "Paris".to_string()];
+    let mut unvisited: Vec<&String> = vec![];
+
+    // loop through city and visited list and store unvisited in above vector
+    for city in cities.iter() {
+        let mut already_visited = false;
+        for visited_city in visited_cities.iter() {
+            if city == visited_city {
+                already_visited = true;
+            }
+        }
+        if !already_visited {
+            unvisited.push(city);
+        }
+    }
+
+    // return unvisited list
+    unvisited
+}
+
