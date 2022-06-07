@@ -1,6 +1,8 @@
 mod vectors;
+mod es6;
 
 use vectors::*;
+use es6::*;
 
 fn main() {
     // init travel plans
@@ -32,4 +34,18 @@ fn main() {
 
     // print traveller description
     println!("{}", travel_plans.get_traveller_description());
+
+    // test es6 methods
+
+    let es = ArrayMethods::new();
+
+    // test map
+    for num in es.double().iter() {
+        println!("{}", num);
+    }
+
+    // test filter
+    for item in es.filter().iter() {
+        println!("{}", item);
+    }
 }
