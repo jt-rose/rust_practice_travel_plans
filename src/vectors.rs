@@ -40,8 +40,19 @@ impl TravelPlans {
             return "she has not travelled so much"
     }
 
-    pub fn add_visited_city(&mut self, city: String) {
-        self.visited_cities.push(city);
+    pub fn add_visited_city(&mut self, city: &str) {
+        let visit_status = self.check_already_listed(city);
+
+        match visit_status {
+            VisitStatus::NotListed => self.visited_cities.push(city.to_string()),
+            VisitStatus::Visited => println!("You've already crossed off {}!", city), // why not printing?
+            VisitStatus::OnWishList => {
+                self.travel_wish_list.retain_mut(|wish| {
+                    wish != city
+                });
+                self.visited_cities.push(city.to_string());
+            }
+        }
     }
 
     pub fn remove_visited_city(&mut self, city: String) {
@@ -50,15 +61,15 @@ impl TravelPlans {
         })
     }
 
-    pub fn  add_to_wish_list(&mut self, city: String) {
-        let visit_status = self.check_already_listed(&city);
+    pub fn  add_to_wish_list(&mut self, city: &str) {
+        let visit_status = self.check_already_listed(city);
 
         match visit_status {
             VisitStatus::Visited => println!("You've already been to {}!", city),
             VisitStatus::OnWishList => println!("{} is already on your wish list!", city),
             VisitStatus::NotListed => {
                 println!("Can't wait to visit {}!", city);
-                self.travel_wish_list.push(city);
+                self.travel_wish_list.push(city.to_string());
             }
         }
     }
