@@ -48,7 +48,13 @@ impl ArrayMethods {
         })
     }
 
-    // every
+    // every => all
+    pub fn all_less_than_10(&self) -> bool {
+        let limit: u8 = 10;
+        self.numbers.iter().all(|num| {
+            num < &limit
+        })
+    }
 
 
     // reduce

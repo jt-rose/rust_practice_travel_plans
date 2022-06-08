@@ -70,4 +70,8 @@ fn main() {
 
     let london_found = es.find_some_city("London");
     println!("London was found on the list of cities: {}", london_found);
+
+    // test the all method
+    let all_less_than_10 = es.all_less_than_10();
+    println!("All numbers are less than 10: {}", all_less_than_10);
 }
