@@ -35,6 +35,11 @@ impl ArrayMethods {
     }
 
     // findIndex
+    pub fn find_paris_index(&self) -> Option<usize> {
+        self.strings.iter().position(|city| {
+            city == &"Paris"
+        })
+    }
 
     // some
 

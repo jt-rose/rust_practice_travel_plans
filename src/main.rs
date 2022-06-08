@@ -1,6 +1,7 @@
 mod vectors;
 mod es6;
 
+use std::process::id;
 use vectors::*;
 use es6::*;
 
@@ -56,5 +57,14 @@ fn main() {
         println!("We found {}", city);
     } else {
         println!("No city found!");
+    }
+
+    // test finding index of paris
+    let found_paris_index = es.find_paris_index();
+
+    if let Some(idx) = found_paris_index {
+        println!("Paris index is {}", idx);
+    } else {
+        println!("No index found!");
     }
 }
