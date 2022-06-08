@@ -34,14 +34,24 @@ impl ArrayMethods {
         })
     }
 
-    // findIndex
+    // findIndex => position
     pub fn find_paris_index(&self) -> Option<usize> {
         self.strings.iter().position(|city| {
             city == &"Paris"
         })
     }
 
-    // some
+    // some => so far this seems best accomplished with a boring old for-loop
+    pub fn find_some_city(&self, target_city: &str) -> bool {
+        let mut city_found = false;
+        for city in self.strings.iter() {
+            if city == target_city {
+                city_found = true;
+                break;
+            }
+        }
+        city_found
+    }
 
     // every
 

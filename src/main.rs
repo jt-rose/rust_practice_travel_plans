@@ -67,4 +67,7 @@ fn main() {
     } else {
         println!("No index found!");
     }
+
+    let london_found = es.find_some_city("London");
+    println!("London was found on the list of cities: {}", london_found);
 }
