@@ -41,19 +41,15 @@ impl ArrayMethods {
         })
     }
 
-    // some => so far this seems best accomplished with a boring old for-loop
+    // some => any
     pub fn find_some_city(&self, target_city: &str) -> bool {
-        let mut city_found = false;
-        for city in self.strings.iter() {
-            if city == target_city {
-                city_found = true;
-                break;
-            }
-        }
-        city_found
+        self.strings.iter().any(|city| {
+            city == target_city
+        })
     }
 
     // every
+
 
     // reduce
 
