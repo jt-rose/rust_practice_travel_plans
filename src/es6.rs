@@ -20,7 +20,7 @@ impl ArrayMethods {
         }).collect()
     }
 
-    // filter => retain
+    // filter => filter / retain
     pub fn filter(&self) -> Vec<&String> {
         self.strings.iter().filter(|s| {
             s == &"Paris"
@@ -28,6 +28,11 @@ impl ArrayMethods {
     }
 
     // find
+    pub fn findParis(&self) -> Option<&String> {
+        self.strings.iter().find(|city| {
+            city == &"Paris"
+        })
+    }
 
     // findIndex
 

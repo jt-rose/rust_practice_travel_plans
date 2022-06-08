@@ -48,4 +48,13 @@ fn main() {
     for item in es.filter().iter() {
         println!("{}", item);
     }
+
+    // test find Paris
+    let found_paris = es.findParis();
+
+    if let Some(city) = found_paris {
+        println!("We found {}", city);
+    } else {
+        println!("No city found!");
+    }
 }
