@@ -28,7 +28,7 @@ impl ArrayMethods {
     }
 
     // find
-    pub fn findParis(&self) -> Option<&String> {
+    pub fn find_paris(&self) -> Option<&String> {
         self.strings.iter().find(|city| {
             city == &"Paris"
         })
@@ -58,6 +58,15 @@ impl ArrayMethods {
 
 
     // reduce
+    pub fn sum(&self) -> u8 {
+        self.numbers.iter().sum()
+    }
 
+    // reduce alternative - fold
+    pub fn get_char_count(&self) -> usize {
+        self.strings.iter().fold(0, |acc, x| {
+            acc + x.len()
+        })
+    }
 
 }

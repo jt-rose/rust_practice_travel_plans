@@ -51,7 +51,7 @@ fn main() {
     }
 
     // test find Paris
-    let found_paris = es.findParis();
+    let found_paris = es.find_paris();
 
     if let Some(city) = found_paris {
         println!("We found {}", city);
@@ -74,4 +74,11 @@ fn main() {
     // test the all method
     let all_less_than_10 = es.all_less_than_10();
     println!("All numbers are less than 10: {}", all_less_than_10);
+
+    // test sum method
+    let sum = es.sum();
+    println!("The sum of all the numbers is {}", sum);
+
+    // test fold function
+    println!("Total char count: {}", es.get_char_count());
 }
